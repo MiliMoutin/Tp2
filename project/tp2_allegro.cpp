@@ -21,6 +21,7 @@ bool init_allegro(allegro_t * allegro_p)
 	allegro_p->event_queue = NULL;   //Puntero a cola de eventos
 	allegro_p->timer = NULL;                //puntero a timer
 	allegro_p->cleaner_robot = NULL;        //Puntero a imagen
+	allegro_p->font = NULL;
 
 	
 
@@ -30,6 +31,32 @@ bool init_allegro(allegro_t * allegro_p)
 		return 1;
 	}
 
+
+
+	if (!al_install_mouse())  //Inicializo allegro
+	{ //Primera funcion a llamar antes de empezar a usar allegro.
+		fprintf(stderr, "failed to initialize allegro!\n");
+		return 1;
+	}
+	
+	
+
+	if (!al_init_font_addon()) //inicializo fuentes 
+	{ 
+		fprintf(stderr, "failed to initialize allegro!\n");
+		return 1;
+	}
+	
+	if (!al_init_ttf_addon()) //inicializo fuente
+	{
+		return 1;
+	}
+
+	allegro_p->font = al_load_ttf_font("OpenSans-Bold.ttf", 72, 0); //cargo fuente
+	if (!allegro_p->font) { //si falla lo aviso
+		fprintf(stderr, "Could not load 'OpenSans-Bold.ttf'.\n");
+		return 0;
+	}
 
 
 	allegro_p->timer = al_create_timer(1.0 / FPS); //timer para actualizacion de pantalla
@@ -107,25 +134,45 @@ bool init_allegro(allegro_t * allegro_p)
 
 	
 	return 0;
-}
+}  //inicializo allegro
 
 
+/*
+Muestra todo el piso sucio
+recibe: int cantidad de columnas
+		int cantidad de filas
+		float tamaño de baldosa
+devuelve: nada
+*/
 void Create_dirty_floor(int col,int fil,float size_floor)
 {
 
-	al_draw_filled_rectangle(0,0, size_floor*col, size_floor*fil, al_map_rgb(50, 50, 50));
-	Colocate_grid(col, fil, size_floor);
+	al_draw_filled_rectangle(0,0, size_floor*col, size_floor*fil, al_map_rgb(50, 50, 50)); //coloca todo el piso gris
+	Colocate_grid(col, fil, size_floor); //genera una grilla
 	
 	return;
-}
+}  
 
+/*
+Muestra limpia una baldosa
+recibe: int coordenada baldosa en x
+		int coordenada baldosa en y
+		float tamaño de baldosa
+devuelve: nada
+*/
 void Clean_floor(int x, int y,float size_floor)
 {
 	al_draw_filled_rectangle(size_floor*x+ THICKNESS_LINE, size_floor*y+ THICKNESS_LINE, size_floor*(x + 1)- THICKNESS_LINE, size_floor*(y + 1)- THICKNESS_LINE, al_map_rgb(255,255,255));
-
 	return;
 }
 
+/*
+genera una grilla
+recibe: int cantidad de columnas
+		int cantidad de filas
+		float tamaño de baldosa
+devuelve: nada
+*/
 void Colocate_grid(int col, int fil,float size_floor)
 {
 	for (int i = 1; i < fil; i++)
@@ -135,6 +182,15 @@ void Colocate_grid(int col, int fil,float size_floor)
 		al_draw_line(size_floor*i, 0, size_floor*i, size_floor*fil, al_map_rgb(0, 0, 0), THICKNESS_LINE);
 }
 
+/*
+Muestra un robot en pantalla
+recibe: float posicion en x
+		float posicion en y
+		float angulo de direccion
+		allegro_t* para buscar imagen de robot
+		float tamaño de baldosa
+devuelve: nada
+*/
 void Set_robot(float x, float y,float angle, allegro_t * allegro_p,float size_floor)
 {
 
@@ -142,4 +198,55 @@ void Set_robot(float x, float y,float angle, allegro_t * allegro_p,float size_fl
 
 	return;
 
+}
+
+/*
+Select Mode
+cuando se invoca esta funcion pasa a tener todo el control hasta que se selecciona un modo.
+recibe: int cantidad de columnas
+		int cantidad de filas
+		allegro_t* puntero a estructura auxiliar
+devuelve: int modo de operacion. 1 o 2
+*/
+int Select_mode(int fil, int col,allegro_t* allegro_p)
+{
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+	char str[50];
+	sprintf(str, "Simulador %d x %d baldosas", fil, col);
+	al_draw_text(allegro_p->font, al_map_rgb(255, 255, 255), SCREEN_W / 2, 0, ALLEGRO_ALIGN_CENTRE, str);
+
+	al_draw_text(allegro_p->font, al_map_rgb(255, 255, 255), SCREEN_W / 4, SCREEN_H/2 - 100, ALLEGRO_ALIGN_CENTRE, "Modo 1");
+	al_draw_text(allegro_p->font, al_map_rgb(255, 255, 255), 3*(SCREEN_W / 4), SCREEN_H / 2 - 100, ALLEGRO_ALIGN_CENTRE, "Modo 2");
+
+	al_draw_rectangle(SCREEN_W / 7, SCREEN_H / 2 - 100, SCREEN_W / 3+50, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
+
+	al_draw_rectangle(SCREEN_W/2 +200, SCREEN_H / 2 - 100, SCREEN_W/2 + 510, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
+
+	al_flip_display(); // actualizo display
+
+	int mode=0;
+
+	ALLEGRO_MOUSE_STATE state;
+
+	do {
+		al_get_mouse_state(&state);
+
+			if (state.buttons & 1)
+			{
+				if (state.x >= SCREEN_W / 7 && state.x <= (SCREEN_W / 3 + 50) && state.y >= SCREEN_H / 2 - 100 && state.y <= SCREEN_H / 2)
+					mode = 1;
+
+				if (state.x >= SCREEN_W / 2 + 200 && state.x <= (SCREEN_W / 2 + 510) && state.y >= SCREEN_H / 2 - 100 && state.y <= SCREEN_H / 2)
+					mode = 2;
+			}
+
+
+
+	} while (mode == 0);
+
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	//al_draw_justified_text(allegro_p->font, al_map_rgb(255, 255, 255), 0, 100, 0, 200, 1, str);
+
+	return mode;
 }

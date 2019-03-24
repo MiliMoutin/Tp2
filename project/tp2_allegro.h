@@ -22,8 +22,8 @@
 
 
 #define FPS			60.0 //cantidad de cuadros por segundo que se mostrara en pantalla
-#define SCREEN_W		800
-#define SCREEN_H		800
+#define SCREEN_W		1366
+#define SCREEN_H		768
 #define QUIT    'q'
 #define THICKNESS_LINE 1.5
 
@@ -37,7 +37,7 @@ typedef struct
 	ALLEGRO_EVENT_QUEUE * event_queue;   //Puntero a cola de eventos
 	ALLEGRO_TIMER * timer;                //puntero a timer
 	ALLEGRO_BITMAP  * cleaner_robot;        //Puntero a imagen
-
+	ALLEGRO_FONT *font;
 
 }allegro_t;
 
@@ -46,3 +46,4 @@ bool init_allegro(allegro_t*);			//inicializa allegro
 void Create_dirty_floor(int col, int fil, float size_floor); //coloca todos los pisos sucios. recibe columna y fila.
 void Clean_floor(int x, int y, float);
 void Set_robot(float x, float y, float angle, allegro_t * allegro_p, float size_floor);
+int Select_mode(int fil, int col,allegro_t*);
