@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParseCmdLine.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Robot.cpp" />
@@ -120,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="ParseCmdLine.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Robot.h" />

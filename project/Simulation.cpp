@@ -6,7 +6,7 @@
 
 int CreateSimulation(Sim_t * Sim_p)
 {
-	srand(time(NULL));
+	//srand(time(NULL));
 
 
 
