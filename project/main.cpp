@@ -37,12 +37,31 @@ int main(int argc, char **argv)
 		return 0; //si fallas devuelve 0
 	}
 
-
-
 	float size_floor_h = SCREEN_H / COLUMNAS;
 	float size_floor_w = SCREEN_W / FILAS;
 	float size_floor = size_floor_h > size_floor_w ? size_floor_h : size_floor_w;   //Determino tamaño de baldosa para que se ajuste a la ventana
-	/*
+	
+
+
+
+
+	if (Select_mode(FILAS, COLUMNAS, allegro_p) == 1)   //Select Mode devuelve un int indicando el modo 1 o 2
+	{
+		Create_dirty_floor(FILAS, COLUMNAS, size_floor);
+		al_flip_display();
+		al_rest(5.0);
+	}
+
+	
+	al_flip_display(); // actualizo display
+
+
+	al_destroy_display(allegro_data.display); //destruyo display display
+
+	return 0;
+}
+
+/*
 	Create_dirty_floor(FILAS,COLUMNAS,size_floor);  //ejemplo iniciar piso sucio en ventana
 
 	Clean_floor(2,1,size_floor); //ejemplos limpiar baldosa en ventana
@@ -55,16 +74,3 @@ int main(int argc, char **argv)
 	Set_robot(4, 6.5, 5, allegro_p, size_floor);
 	Set_robot(8, 1.5, 60, allegro_p, size_floor);
 	*/
-
-	Select_mode(FILAS, COLUMNAS, allegro_p);   //Select Mode devuelve un int indicando el modo 1 o 2
-	
-
-	
-	al_flip_display(); // actualizo display
-
-
-	al_destroy_display(allegro_data.display); //destruyo display display
-
-	return 0;
-}
-

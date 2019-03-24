@@ -115,6 +115,7 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Robot.cpp" />
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="tp2_allegro.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Robot.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="tp2_allegro.h" />
   </ItemGroup>
   <ItemGroup>
