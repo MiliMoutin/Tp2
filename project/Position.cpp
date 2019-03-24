@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <cmath>
 #include "Position.h"
+#include "Point.h"
 
 
 using namespace std;

@@ -1,5 +1,5 @@
-#include <iostream>;
-#include "Point.h";
+#include <iostream>
+#include "Point.h"
 
 using namespace std;
 

@@ -16,16 +16,16 @@
 #include "Point.h"
 #include "Position.h"
 #include "Robot.h"
+#include "simulation.h"
 #include "ParseCmdLine.h"
 
 using namespace std;
 int parseCallback(char *, char *, void *);	 //Declaracion de la funcion de callback
 
 
-#define FILAS 10
-#define COLUMNAS 20
 
-
+#define FILAS	10
+#define COLUMNAS	10
 
 
 
@@ -34,6 +34,10 @@ int main(int argc, char **argv)
 	allegro_t allegro_data;						//Estructura para allegro
 	allegro_t * allegro_p = &allegro_data;
 
+	Sim_t Simulation_data;
+	Sim_t * Simulation_p = &Simulation_data;
+
+	//parsecmdline
 	/*
 	//MAX_ARGS =3 -> UserData guarda Fila, Columna, Nrobots
 	int		*UserData[MAX_ARGS];		//Arreglo de strings donde se guardan los parametros
@@ -53,15 +57,8 @@ int main(int argc, char **argv)
 	case SINTAX_ERROR: printf("Su ingreso ha sido incorrecto (Formato: -clave valor // parametro)\n");
 		break;
 	
-	}*/
-
-
-
-
-
-
-
-
+	}*/ 
+	
 
 
 	if (init_allegro(allegro_p)) //Inicializo allegro
@@ -69,23 +66,26 @@ int main(int argc, char **argv)
 		return 0; //si fallas devuelve 0
 	}
 
-	float size_floor_h = SCREEN_H / COLUMNAS;
-	float size_floor_w = SCREEN_W / FILAS;
-	float size_floor = size_floor_h > size_floor_w ? size_floor_h : size_floor_w;   //Determino tamaño de baldosa para que se ajuste a la ventana
+	
+
+	Simulation_data.Mode = Select_mode(FILAS, COLUMNAS, allegro_p);
+	Simulation_data.floor.m = FILAS;
+	Simulation_data.floor.n = COLUMNAS;
+	Simulation_data.nRobot = 5;
+
+	CreateSimulation(Simulation_p,allegro_p);
+
+
+
+	
+		
 	
 
 
 
 
-	if (Select_mode(FILAS, COLUMNAS, allegro_p) == 1)   //Select Mode devuelve un int indicando el modo 1 o 2
-	{
-		Create_dirty_floor(FILAS, COLUMNAS, size_floor);
-		al_flip_display();
-		al_rest(5.0);
-	}
 
-	
-	al_flip_display(); // actualizo display
+
 
 
 	al_destroy_display(allegro_data.display); //destruyo display display
@@ -93,19 +93,6 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-/*
-	Create_dirty_floor(FILAS,COLUMNAS,size_floor);  //ejemplo iniciar piso sucio en ventana
-
-	Clean_floor(2,1,size_floor); //ejemplos limpiar baldosa en ventana
-	Clean_floor(2,3, size_floor);
-	Clean_floor(5,3, size_floor);
-	Clean_floor(0,5, size_floor);
-	Clean_floor(1,4, size_floor);
-
-	Set_robot(2.5, 1.5, 45, allegro_p,size_floor); //ejemplo colocar robot en ventana
-	Set_robot(4, 6.5, 5, allegro_p, size_floor);
-	Set_robot(8, 1.5, 60, allegro_p, size_floor);
-	*/
 
 
 

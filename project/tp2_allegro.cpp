@@ -176,10 +176,10 @@ devuelve: nada
 void Colocate_grid(int col, int fil,float size_floor)
 {
 	for (int i = 1; i < fil; i++)
-			al_draw_line(0, size_floor*i, size_floor*col, size_floor*i, al_map_rgb(0, 0, 0), THICKNESS_LINE);
+			al_draw_line(0, size_floor*i, SCREEN_W, size_floor*i, al_map_rgb(0, 0, 0), THICKNESS_LINE);
 
-	for (int i = 1; i < fil; i++)
-		al_draw_line(size_floor*i, 0, size_floor*i, size_floor*fil, al_map_rgb(0, 0, 0), THICKNESS_LINE);
+	for (int i = 1; i < col; i++)
+		al_draw_line(size_floor*i, 0, size_floor*i, SCREEN_H, al_map_rgb(0, 0, 0), THICKNESS_LINE);
 }
 
 /*

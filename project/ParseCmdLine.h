@@ -1,3 +1,4 @@
+#pragma once
 #include <stdio.h>
 
 //Todos los valores de los "defines" estan entre parentesis para 
