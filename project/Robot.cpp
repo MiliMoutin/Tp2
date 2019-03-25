@@ -1,8 +1,8 @@
 
 
-#include <iostream>;
-#include <cstdlib>;
-#include "Robot.h";
+#include <iostream>
+#include <cstdlib>
+#include "Robot.h"
 
 using namespace std;
 

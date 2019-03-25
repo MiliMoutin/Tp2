@@ -219,9 +219,9 @@ int Select_mode(int fil, int col,allegro_t* allegro_p)
 	al_draw_text(allegro_p->font, al_map_rgb(255, 255, 255), SCREEN_W / 4, SCREEN_H/2 - 100, ALLEGRO_ALIGN_CENTRE, "Modo 1");
 	al_draw_text(allegro_p->font, al_map_rgb(255, 255, 255), 3*(SCREEN_W / 4), SCREEN_H / 2 - 100, ALLEGRO_ALIGN_CENTRE, "Modo 2");
 
-	al_draw_rectangle(SCREEN_W / 7, SCREEN_H / 2 - 100, SCREEN_W / 3+50, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
+	al_draw_rectangle(SCREEN_W /4 -150, SCREEN_H / 2 - 100, SCREEN_W / 4 + 200, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
 
-	al_draw_rectangle(SCREEN_W/2 +200, SCREEN_H / 2 - 100, SCREEN_W/2 + 510, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
+	al_draw_rectangle(3*SCREEN_W/4 -150, SCREEN_H / 2 - 100, 3*SCREEN_W/4 +200, SCREEN_H / 2, al_map_rgb(255, 255, 255), THICKNESS_LINE);
 
 	al_flip_display(); // actualizo display
 

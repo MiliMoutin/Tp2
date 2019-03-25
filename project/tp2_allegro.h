@@ -22,8 +22,8 @@
 
 
 #define FPS			60.0 //cantidad de cuadros por segundo que se mostrara en pantalla
-#define SCREEN_W		1366
-#define SCREEN_H		768
+#define SCREEN_W		1280
+#define SCREEN_H		720
 #define QUIT    'q'
 #define THICKNESS_LINE 1.5
 

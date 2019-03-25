@@ -49,15 +49,11 @@ void StartMode1(Sim_t * Sim_p,allegro_t * allegro_p)
 		return;
 	}
 
-	setLocation(MyRobot, rand() % Sim_p->floor.m, rand() % Sim_p->floor.n , rand() % MAX_DEGREE_ROTATION); //segmentation faul =(
+	setLocation(MyRobot, rand() % Sim_p->floor.m, rand() % Sim_p->floor.n , rand() % MAX_DEGREE_ROTATION);
+	clean(MyFloor, MyRobot->p);			//true posicion de baldosa
+	Clean_floor((int)whereIsRobX(MyRobot), (int)whereIsRobY(MyRobot), size_floor);	//pone baldosa en blanco en allegro
+	Set_robot(floor(whereIsRobX(MyRobot)),floor( whereIsRobY(MyRobot)), angleRob(MyRobot), allegro_p, size_floor); //coloca robot en allegro;
 
-	Set_robot(whereIsRobX(MyRobot), whereIsRobY(MyRobot), angleRob(MyRobot), allegro_p, size_floor); //coloca robot en allegro;
-
-
-
-
-	//clean(MyFloor, MyPoint);			//true posicion de baldosa
-	//Clean_floor(5, 5, size_floor);	//pone baldosa en blanco en allegro
 
 
 	al_flip_display();	//actualiza display

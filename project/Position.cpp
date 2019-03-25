@@ -1,6 +1,6 @@
-#include <iostream>; 
-#include <cmath>;
-#include "Position.h";
+#include <iostream>
+#include <cmath>
+#include "Position.h"
 
 using namespace std;
 

@@ -1,6 +1,6 @@
-#include <iostream>;
-#include "Floor.h";
-#include "Position.h";
+#include <iostream>
+#include "Floor.h"
+#include "Position.h"
 
 using namespace std;
 
@@ -49,11 +49,11 @@ bool validRange(PFloor f, PPosition p) {
 }
 
 int m(PFloor f) {
-	f->m;
+	return f->m;
 }
 
 int n(PFloor f) {
-	f->n;
+	return f->n;
 }
 
 
