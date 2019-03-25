@@ -1,5 +1,6 @@
-#include <iostream>
-#include "Floor.h"
+#include <iostream>;
+#include "Floor.h";
+#include "Position.h";
 
 using namespace std;
 
@@ -28,9 +29,9 @@ bool isClean(PFloor p) {
 	return clean;
 }
 
-bool clean(PFloor f, PPoint p) {
-	int i = floor(x(p));
-	int j = floor(y(p));
+bool clean(PFloor f, PPosition p) {
+	int i = floor(wherex(p));
+	int j = floor(wherey(p));
 	if (*(f->baldosas + (i*f->n) + j) == true) { 
 		return false;
 	}
@@ -43,8 +44,16 @@ void destroyFloor(PFloor f) {
 	free(f);
 }
 
-bool validRange(PFloor f, PPoint p) {
-	return (x(p) < f->m) && (y(p) < f->n);
+bool validRange(PFloor f, PPosition p) {
+	return (wherex(p) < f->m) && (wherey(p) < f->n);
+}
+
+int m(PFloor f) {
+	f->m;
+}
+
+int n(PFloor f) {
+	f->n;
 }
 
 

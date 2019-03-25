@@ -1,15 +1,14 @@
-#pragma once
-#include "Point.h"
-
-typedef struct
-{
-	PPoint p;
+typedef struct{
+	double x;
+	double y;
 	double angle;
-} Position;
+}Position;
 
 typedef Position* PPosition;
 
-PPosition p(double y, double x, double angle);
+PPosition createPos(double x, double y, double angle);
 bool setCoordinates(PPosition po, double x, double y, double angle);
 bool movePoint(PPosition po, double delta, double angle);
-PPoint where(PPosition po);
+double wherex(PPosition po);
+double wherey(PPosition po);
+double angle(PPosition po);

@@ -5,7 +5,6 @@
 #include "Simulation.h"
 #include "tp2_allegro.h"
 #include "Floor.h"
-#include "Point.h"
 #include "Position.h"
 #include "Robot.h"
 
@@ -50,9 +49,9 @@ void StartMode1(Sim_t * Sim_p,allegro_t * allegro_p)
 		return;
 	}
 
-	setLocation(MyRobot, rand() % Sim_p->floor.m, rand() % Sim_p->floor.n, rand() % MAX_DEGREE_ROTATION); //segmentation faul =(
+	setLocation(MyRobot, rand() % Sim_p->floor.m, rand() % Sim_p->floor.n , rand() % MAX_DEGREE_ROTATION); //segmentation faul =(
 
-	Set_robot(MyRobot->p->p->x, MyRobot->p->p->y, MyRobot->p->angle, allegro_p, size_floor); //coloca robot en allegro;
+	Set_robot(whereIsRobX(MyRobot), whereIsRobY(MyRobot), angleRob(MyRobot), allegro_p, size_floor); //coloca robot en allegro;
 
 
 

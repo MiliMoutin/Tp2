@@ -13,7 +13,6 @@
 
 #include "tp2_allegro.h"
 #include "Floor.h"
-#include "Point.h"
 #include "Position.h"
 #include "Robot.h"
 #include "simulation.h"

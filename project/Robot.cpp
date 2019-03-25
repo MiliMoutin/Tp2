@@ -1,8 +1,8 @@
 
 
-#include <iostream>
-#include <cstdlib>
-#include "Robot.h"
+#include <iostream>;
+#include <cstdlib>;
+#include "Robot.h";
 
 using namespace std;
 
@@ -12,6 +12,7 @@ PRobot createRobot() {
 		free(toret);
 		return NULL;
 	}
+	toret->p = createPos(-1, -1, -1);
 	return toret;
 }
 
@@ -20,8 +21,14 @@ bool setLocation(PRobot r, double x, double y, double angle) {
 	return true;
 }
 
-PPoint whereIsRob(PRobot r) {
-	return where(r->p);
+double whereIsRobX(PRobot r) {
+	return wherex(r->p);
+}
+double whereIsRobY(PRobot r) {
+	return wherey(r->p);
+}
+double angleRob(PRobot r) {
+	return angle(r->p);
 }
 /*no se si va a ser necesario aun*/
 /*PPoint newLocation(PRobot, double delta, double angle) {

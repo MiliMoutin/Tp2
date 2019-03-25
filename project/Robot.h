@@ -1,7 +1,5 @@
-#pragma once
 
 #include "Position.h"
-#include "Point.h"
 
 typedef struct {
 	PPosition p;
@@ -12,6 +10,8 @@ typedef Robot* PRobot;
 
 PRobot createRobot();
 bool setLocation(PRobot r, double x, double y, double angle);
-PPoint whereIsRob(PRobot);
+double whereIsRobX(PRobot r);
+double whereIsRobY(PRobot r);
+double angleRob(PRobot r);
 
 /*bool canMove();*/
