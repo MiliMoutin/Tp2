@@ -53,14 +53,3 @@ PRobot createRobots(Sim_t * Sim_p)
 	return bots;
 }
 
-int movement(Robot_t* robots, int cant_Robots, Piso_t*piso, int tick_counter)
-{
-
-	for (int i = 0; i < cant_Robots; i++)	//mueve cada robot
-	{
-		(robots + i)->move(piso->ancho, piso->largo);
-	}
-	tick_counter++;		//y aumenta el contador de ticks
-
-	return tick_counter;		//Devuelve contador de ticks
-}
