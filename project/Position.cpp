@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "Position.h"
-
+#include "Robot.h"
 
 
 using namespace std;
@@ -43,11 +43,11 @@ double angle(PPosition po) {
 	return po->angle;
 }
 
-bool nextCoordinate(PPosition po,double xmax, double ymax) // recibe el punto y el maximo valor que pueden tener las coordenadas en el piso creado
+bool nextCoordinate(PRobot bot,double xmax, double ymax) // recibe el punto y el maximo valor que pueden tener las coordenadas en el piso creado
 {
-	double x = wherex(po);
-	double y = wherey(po);
-	double angulo = angle(po);
+	double x = wherex(bot->p);
+	double y = wherey(bot->p);
+	double angulo = angle(bot->p);
 
 
 	x = x + cos((angulo / 180)*M_PI);
@@ -60,7 +60,7 @@ bool nextCoordinate(PPosition po,double xmax, double ymax) // recibe el punto y 
 	}
 	else
 	{
-		setCoordinates(po, x, y, angulo); //guarda nueva posicion
+		setCoordinates(bot->p, x, y, angulo); //guarda nueva posicion
 		return true;
 	}
 

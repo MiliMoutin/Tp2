@@ -1,7 +1,7 @@
 #pragma once
-#include "Position.h"
-#include "Floor.h"
-#include "Simulation.h"
+
+
+
 #include <time.h>
 #include <iostream>
 #include <cstdlib>
@@ -20,4 +20,6 @@ double whereIsRobX(PRobot r);
 double whereIsRobY(PRobot r);
 double angleRob(PRobot r);
 
+PRobot createRobots(Sim_t * Sim_p);
+void move(PRobot robots, Sim_t* Sim_p);
 /*bool canMove();*/

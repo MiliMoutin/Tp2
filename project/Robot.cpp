@@ -1,7 +1,9 @@
 
 
 #include "Robot.h"
-
+#include "Position.h"
+#include "Floor.h"
+#include "Simulation.h"
 
 using namespace std;
 
@@ -52,4 +54,19 @@ PRobot createRobots(Sim_t * Sim_p)
 	}
 	return bots;
 }
+
+
+
+void move(PRobot robots, Sim_t* Sim_p)
+{
+	
+	for (int i = 0; i < Sim_p->nRobot; i++)	//mueve cada robot
+	{
+		nextCoordinate(robots + i, Sim_p->floor.n, Sim_p->floor.m);
+	}
+	Sim_p->TickCount ++;		//aumenta  ticks
+
+		
+}
+
 
