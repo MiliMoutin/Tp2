@@ -10,16 +10,21 @@
 
 #define MAX_DEGREE_ROTATION 360
 
-void StartMode1(Sim_t *, allegro_t *);
+void Simulate(Sim_t *, allegro_t *);
 
 
 int CreateSimulation(Sim_t * Sim_p, allegro_t * allegro_p)
 {
 	srand(time(NULL));
 
+
 	if (Sim_p->Mode == 1)
 	{
-		StartMode1(Sim_p,allegro_p);
+		Simulate(Sim_p,allegro_p);
+	}
+	else if (Sim_p->Mode == 2)
+	{
+
 	}
 
 
@@ -27,7 +32,7 @@ int CreateSimulation(Sim_t * Sim_p, allegro_t * allegro_p)
 }
 
 
-void StartMode1(Sim_t * Sim_p,allegro_t * allegro_p)
+void Simulate(Sim_t * Sim_p,allegro_t * allegro_p)
 {
 	int cantRobot = Sim_p->nRobot;
 
