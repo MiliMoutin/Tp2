@@ -1,8 +1,7 @@
 
 
-#include <iostream>
-#include <cstdlib>
 #include "Robot.h"
+
 
 using namespace std;
 
@@ -36,3 +35,32 @@ double angleRob(PRobot r) {
 	
 	return 
 }*/
+
+
+
+PRobot createRobots(Sim_t * Sim_p)
+{
+	PRobot bots = NULL;		//defino 
+	bots = (PRobot)malloc(sizeof(PRobot)*(Sim_p->nRobot);	//reservo espacio pa robots
+	if (bots != NULL)
+	{
+		srand(time(NULL));		
+		for (int i = 0; i < (Sim_p->nRobot); i++)
+		{	
+			setLocation(bots +i, rand() % Sim_p->floor.m, rand() % Sim_p->floor.n, rand() % MAX_DEGREE_ROTATION); // va creando los robots
+		}
+	}
+	return bots;
+}
+
+int movement(Robot_t* robots, int cant_Robots, Piso_t*piso, int tick_counter)
+{
+
+	for (int i = 0; i < cant_Robots; i++)	//mueve cada robot
+	{
+		(robots + i)->move(piso->ancho, piso->largo);
+	}
+	tick_counter++;		//y aumenta el contador de ticks
+
+	return tick_counter;		//Devuelve contador de ticks
+}

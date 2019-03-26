@@ -1,5 +1,11 @@
 #pragma once
 #include "Position.h"
+#include "Floor.h"
+#include "Simulation.h"
+#include <time.h>
+#include <iostream>
+#include <cstdlib>
+
 
 typedef struct {
 	PPosition p;
