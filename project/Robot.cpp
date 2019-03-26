@@ -43,7 +43,7 @@ double angleRob(PRobot r) {
 PRobot createRobots(Sim_t * Sim_p)
 {
 	PRobot bots = NULL;		//defino 
-	bots = (PRobot)malloc(sizeof(PRobot)*(Sim_p->nRobot);	//reservo espacio pa robots
+	bots = (PRobot)malloc(sizeof(PRobot)*(Sim_p->nRobot));	//reservo espacio pa robots
 	if (bots != NULL)
 	{
 		srand(time(NULL));		
