@@ -8,7 +8,7 @@
 #include "Position.h"
 #include "Robot.h"
 
-#define MAX_DEGREE_ROTATION 360
+
 
 void Simulate(Sim_t *, allegro_t *);
 

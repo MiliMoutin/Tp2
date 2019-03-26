@@ -31,6 +31,8 @@ double angleRob(PRobot r) {
 	return angle(r->p);
 }
 /*no se si va a ser necesario aun*/
-/*PPoint newLocation(PRobot, double delta, double angle) {
+/*PPoint newLocation(PRobot, double delta, double angle) 
+{
+	
 	return 
 }*/
